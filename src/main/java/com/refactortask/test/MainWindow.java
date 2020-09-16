@@ -45,7 +45,7 @@ public class MainWindow {
         chart.getStyler().setAnnotationType(PieStyler.AnnotationType.LabelAndPercentage);
         chart.getStyler().setAnnotationDistance(1.15);
         chart.getStyler().setDrawAllAnnotations(true);
-        chart.getStyler().setPlotContentSize(.8);
+        chart.getStyler().setPlotContentSize(.7);
         chart.getStyler().setStartAngleInDegrees(90);
         chart.getStyler().setLegendPosition(Styler.LegendPosition.OutsideE);
 
@@ -85,6 +85,9 @@ public class MainWindow {
     }
 
     private void runButtonActionListener() {
+        if (pathTextField.getText().equals("")) {
+            return;
+        }
         try {
             String temp = pathTextField.getText();
             RefactoringMinerWorker refactoringMinerWorker;
@@ -101,6 +104,7 @@ public class MainWindow {
             namesCountTable = createRefactoringNamesTable(convertMapToArray(refactoringNamesCountMap));
             showRefactoringNamesTable();
             frame.setSize(1000, 600);
+            frame.setLocation(0, 0);
         } catch (Exception exception) {
             exception.printStackTrace();
         }
